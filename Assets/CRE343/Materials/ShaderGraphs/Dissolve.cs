@@ -7,6 +7,7 @@ public class DissolveObject : MonoBehaviour
 {
     [SerializeField] private float noiseStrength = 0.25f;
     [SerializeField] private float objectHeight = 1.0f;
+    [SerializeField] private float speed = 0.025f;
 
     private Material material;
 
@@ -17,7 +18,7 @@ public class DissolveObject : MonoBehaviour
 
     private void Update()
     {
-        var time = Time.time * Mathf.PI * 0.25f;
+        var time = Time.time * Mathf.PI * speed;
 
         float height = transform.position.y;
         height += Mathf.Sin(time) * (objectHeight / 2.0f);

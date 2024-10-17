@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4024704275372407586}
   - component: {fileID: 5282003982686670405}
   - component: {fileID: 8213651044925504877}
-  - component: {fileID: -2771887579207191892}
+  - component: {fileID: 3149809021537284936}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8737b1dd7f36f5b4aab7b5efc6048786, type: 2}
+  - {fileID: 2100000, guid: 76f8b72434cf545498962de07b2445ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &-2771887579207191892
+--- !u!114 &3149809021537284936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6041641523765857172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a49861ad1089a0c428406876fff3e144, type: 3}
+  m_Script: {fileID: 11500000, guid: bdf73790f31445044ae6023c971d28b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  enemyData: {fileID: 0}
+  health: 4
