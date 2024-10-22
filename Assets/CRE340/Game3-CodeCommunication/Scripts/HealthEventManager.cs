@@ -3,8 +3,8 @@ using UnityEngine;
 // A simple class to define delegates for health-related events
 public static class HealthEventManager
 {
-
-
+    
+    
     // Define a delegate for damage taken and object destroyed events
     public delegate void HealthEvent(string name, int currentHealth);
 
