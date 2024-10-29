@@ -710,7 +710,6 @@ GameObject:
   - component: {fileID: 679791996}
   - component: {fileID: 679791997}
   - component: {fileID: 679792000}
-  - component: {fileID: 679791998}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -800,7 +799,7 @@ Transform:
   m_GameObject: {fileID: 679791989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.854, z: 5.17}
+  m_LocalPosition: {x: 0, y: 6.854, z: -0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -882,22 +881,7 @@ MonoBehaviour:
   turnSpeed: 0.5
   speed: 5
   grounded: 1
-  maxVelocityChange: 10
---- !u!114 &679791998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679791989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab37321d6807f847bbd038aa1b9bd62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 824549933}
-  alignToPlanet: 0
-  gravityConstant: 10
+  ballOffset: {x: 0, y: 4.604, z: 0}
 --- !u!135 &679792000
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1038,7 +1022,6 @@ GameObject:
   - component: {fileID: 824549931}
   - component: {fileID: 824549930}
   - component: {fileID: 824549929}
-  - component: {fileID: 824549934}
   - component: {fileID: 824549935}
   - component: {fileID: 824549936}
   m_Layer: 0
@@ -1161,19 +1144,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &824549934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824549928}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1c9480b8445cd42a25e4ac22aeaa87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!65 &824549935
 BoxCollider:
   m_ObjectHideFlags: 0

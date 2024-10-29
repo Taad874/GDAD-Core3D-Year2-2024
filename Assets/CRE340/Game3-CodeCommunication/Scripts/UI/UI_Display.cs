@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+
 public class UI_Display : MonoBehaviour
 {
-    // References to the UI elements in the scene
+    // Reference to the UI elements
     public TextMeshProUGUI playerNameText;
     public TextMeshProUGUI playerHealthText;
     public TextMeshProUGUI scoreText;
-    // Method to update the player's name in the UI
+    
+    // Update the player name in the UI
     public void UpdatePlayerName(string playerName)
     {
         if (playerNameText != null)
@@ -14,20 +17,22 @@ public class UI_Display : MonoBehaviour
             playerNameText.text = "Player: " + playerName;
         }
     }
-    // Method to update the player's health in the UI
+
+    // Update the player health in the UI
     public void UpdatePlayerHealth(int playerHealth)
     {
         if (playerHealthText != null)
         {
-            playerHealthText.text = "Health: " + playerHealth.ToString();
+            playerHealthText.text = "Health: " + playerHealth;
         }
     }
-    // Method to update the score in the UI
+
+    // Update the score in the UI
     public void UpdateScore(int score)
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + score.ToString();
+            scoreText.text = "Score: " + score;
         }
     }
 }

@@ -13,8 +13,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private bool grounded = false;
     Rigidbody r;
-    
-    [SerializeField] float maxVelocityChange = 10.0f;
+
+    private bool isMoving;
+
+    private bool onBall;
+    private GameObject ballObject;
+    [SerializeField] private Vector3 ballOffset;
+
+
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (onBall && !isMoving)
+        {
+            transform.position = ballObject.transform.position + ballOffset;
+        }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         if (grounded)
@@ -42,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
         //transform.Translate(-Vector3.right * Time.deltaTime * horizontalInput);
         transform.Rotate(Vector3.up * horizontalInput * turnSpeed); // * Time.deltaTime);
+        if (horizontalInput > 0 || verticalInput >0 || !grounded)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
 
 
 
@@ -59,5 +79,26 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = false;
         canJump = false;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            onBall = true;
+            ballObject = collision.gameObject;
+            ballObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            transform.position = ballObject.transform.position + ballOffset;
+            speed = .5f;
+            
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            onBall = false;
+            speed = 5f;
+            ballObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
     }
 }
