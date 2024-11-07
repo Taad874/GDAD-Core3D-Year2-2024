@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallRolling : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float speed;
+    [SerializeField] private float walkSpeed, runSpeed;
     [SerializeField] private float turnSpeed;
     private bool playerOn;
     private Rigidbody rb;
@@ -25,6 +25,7 @@ public class BallRolling : MonoBehaviour
         //}
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        float speed = Input.GetButton("Fire3") ?  runSpeed : walkSpeed;
         transform.Translate(Vector3.forward * Time.deltaTime * moveVertical * speed);
         //transform.Translate(-Vector3.right * Time.deltaTime * horizontalInput);
         transform.Rotate(Vector3.up * moveHorizontal * turnSpeed); // * Time.deltaTime);

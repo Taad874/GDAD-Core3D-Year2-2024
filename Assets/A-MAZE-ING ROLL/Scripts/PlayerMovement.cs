@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
-   
+    private float speed;
+
     public bool canJump = true;
     public float jumpHeight = 2.0f;
     [SerializeField] private float turnSpeed = 0.5f;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float walkSpeed, runSpeed;
 
     [SerializeField] private bool grounded = false;
     Rigidbody r;
@@ -40,23 +41,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (onBall)// && !isMoving)
         {
-            transform.parent = ballObject.transform;
-            transform.position = ballObject.transform.position + ballOffset;
+            //transform.parent = ballObject.transform;
+            //transform.position = Vector3.Lerp(transform.position, ballObject.transform.position + ballOffset, speed);
             
-            //ballObject.transform.rotation = transform.rotation;
+            ballObject.transform.rotation = transform.rotation;
             
             ballObject.GetComponent<BallRolling>().enabled = true;
-            ballOffset = new Vector3(horizontalInput * speed, ballOffset.y, verticalInput * speed);
+           // ballOffset = new Vector3(horizontalInput * speed, ballOffset.y, verticalInput * speed);
         }
         else
         {
             transform.parent = null;
             ballObject.GetComponent<BallRolling>().enabled = false;
-            ballOffset = new Vector3(0,ballOffset.y, 0);
+            
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        
+        speed = Input.GetButton("Fire3") ? runSpeed : walkSpeed;
+
         if (grounded)
         {
             if (Input.GetButton("Jump") && canJump)
@@ -98,11 +100,11 @@ public class PlayerMovement : MonoBehaviour
         {
             onBall = true;
             ballObject = collision.gameObject;
+            transform.position = ballObject.transform.position + ballOffset;
+            r.velocity = Vector3.zero;
 
-            
 
-            
-            speed = .5f;
+
 
         }
     }
@@ -113,11 +115,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             onBall = false;
-            speed = 5f;
+            
 
         }
     }
     
-    
+    // Stamina functions go here:
+
     
 }
