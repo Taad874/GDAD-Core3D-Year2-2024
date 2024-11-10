@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject ballObject;
     [SerializeField] private Vector3 ballOffset;
 
+    [SerializeField] private float maxStamina , runCost;
+    private float stamina;
+    private bool coolDown;
 
 
 
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         r = GetComponent<Rigidbody>();
         r.freezeRotation = true;
+        stamina = maxStamina;
         //r.useGravity = false;
         //r.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
        
@@ -51,14 +55,27 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.parent = null;
             ballObject.GetComponent<BallRolling>().enabled = false;
             
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        speed = Input.GetButton("Fire3") ? runSpeed : walkSpeed;
 
+        bool isRunning = Input.GetButton("Fire3") && stamina > 0 && isMoving && !coolDown ;
+        speed = isRunning ? runSpeed : walkSpeed;
+
+        if (isRunning)
+        {
+            stamina -= runCost * Time.deltaTime;
+        }
+        else
+        {
+            if (stamina <= 0)
+            {
+                StartCoroutine("CoolDown");
+            }
+            stamina += runCost * Time.deltaTime;
+        }
         if (grounded)
         {
             if (Input.GetButton("Jump") && canJump)
@@ -70,11 +87,11 @@ public class PlayerMovement : MonoBehaviour
         //if (!onBall)
         //{
             transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
-            //transform.Translate(-Vector3.right * Time.deltaTime * horizontalInput);
-            transform.Rotate(Vector3.up * horizontalInput * turnSpeed); // * Time.deltaTime);
+            transform.Translate(-Vector3.right * Time.deltaTime * -horizontalInput * speed);
+            //transform.Rotate(Vector3.up * horizontalInput * turnSpeed); // * Time.deltaTime);
         //}
         
-        if (horizontalInput > 0 || verticalInput >0 || !grounded)
+        if (horizontalInput != 0 || verticalInput != 0 || !grounded)
         {
             isMoving = true;
         }
@@ -83,11 +100,14 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        
+
+        stamina = Mathf.Clamp(stamina, 0, maxStamina);
 
 
-
-
+        if (!isMoving && onBall)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, ballObject.transform.position + ballOffset, Time.deltaTime * speed);
+        }
 
 
     }
@@ -119,8 +139,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
-    
+ 
     // Stamina functions go here:
-
-    
+    public float GetStamina() => stamina;
+    public float GetMaxStamina() => maxStamina;
+    IEnumerator CoolDown()
+    {
+        coolDown = true;
+        yield return new WaitForSeconds(maxStamina / runCost);
+        coolDown = false;
+    }
 }
