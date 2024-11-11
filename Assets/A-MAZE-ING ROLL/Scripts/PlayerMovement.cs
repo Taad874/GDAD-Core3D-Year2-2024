@@ -86,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         if (!grounded) { canJump = false; }
         //if (!onBall)
         //{
+        
             transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
             transform.Translate(-Vector3.right * Time.deltaTime * -horizontalInput * speed);
             //transform.Rotate(Vector3.up * horizontalInput * turnSpeed); // * Time.deltaTime);
