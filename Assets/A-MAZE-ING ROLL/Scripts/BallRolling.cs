@@ -64,14 +64,14 @@ public class BallRolling : MonoBehaviour
 
         if (stamina == 0)
         {
-            playerObject.GetComponent<Rigidbody>().AddForce(new Vector3(ejectForce, ejectForce, ejectForce), ForceMode.Force);
+            //playerObject.GetComponent<Rigidbody>().AddForce(new Vector3(ejectForce, ejectForce, ejectForce), ForceMode.Force);
             stamina = maxStamina;
         }
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             
             isMoving = true;
-            AudioEventManager.PlaySFX(this.transform, "Ball2", 1.0f, 1.0f, true, 0.1f, 0f);
+            AudioEventManager.PlaySFX(this.transform, "Ball2", 1.0f, 1.0f, true, 0.1f, 0f, "Moving");
         }
         else
         {

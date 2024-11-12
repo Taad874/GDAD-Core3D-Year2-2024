@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canJump = true;
     public float jumpHeight = 2.0f;
-    [SerializeField] private float turnSpeed = 0.5f;
+    //[SerializeField] private float turnSpeed = 0.5f;
     [SerializeField] private float walkSpeed, runSpeed;
 
     [SerializeField] private bool grounded = false;
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             onBall = true;
             ballObject = collision.gameObject;
             transform.position = Vector3.MoveTowards(transform.position, ballObject.transform.position + ballOffset, Time.deltaTime * speed);
-            r.velocity = Vector3.zero;
+            //r.velocity = Vector3.zero;
 
 
 
@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             onBall = false;
-            ballObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //ballObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             
 
         }
