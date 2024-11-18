@@ -182,7 +182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8efe2b7d08044d4db9d54f273404d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -392,7 +392,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1ca40485aa876a549ad0c2f4fbe35154, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -431,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 353018389}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -2.2081, y: 2.3616, z: -3.5981}
+  m_LocalPosition: {x: -1.84, y: 2.3616, z: -3.55}
   m_LocalScale: {x: 8.714638, y: 4.789435, z: 7.503667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -729,7 +729,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8efe2b7d08044d4db9d54f273404d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1165,15 +1165,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f0f728d877a40498b5bb42f4a99851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canJump: 1
-  jumpHeight: 0.5
+  horizontalInput: 0
+  verticalInput: 0
+  speed: 0
   walkSpeed: 5
   runSpeed: 7
-  grounded: 1
-  ballObject: {fileID: 824549928}
-  ballOffset: {x: 0, y: 4.7, z: 0}
   maxStamina: 100
   runCost: 10
+  stamina: 0
+  coolDown: 0
+  isRunning: 0
+  grounded: 1
+  canJump: 1
+  jumpHeight: 0.5
+  ballObject: {fileID: 824549928}
+  ballOffset: {x: 0, y: 4.7, z: 0}
 --- !u!135 &679792000
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1256,7 +1262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1ca40485aa876a549ad0c2f4fbe35154, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1447,14 +1453,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75eb4e9008fcbc459998a7386775270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioBehaviour: {fileID: 0}
-  offset: {x: 0, y: 4.604, z: 0}
+  horizontalInput: 0
+  verticalInput: 0
+  speed: 0
   walkSpeed: 2
   runSpeed: 2.7
-  turnSpeed: 0.5
-  playerObject: {fileID: 679791989}
   maxStamina: 10
   runCost: 2
+  stamina: 0
+  coolDown: 0
+  isRunning: 0
+  grounded: 0
+  audioBehaviour: {fileID: 0}
+  playerObject: {fileID: 679791989}
   ejectForce: 1
 --- !u!1 &1052853518
 GameObject:
@@ -1584,7 +1595,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8efe2b7d08044d4db9d54f273404d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1734,6 +1745,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305349052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305349054}
+  - component: {fileID: 1305349053}
+  m_Layer: 0
+  m_Name: MovementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1305349053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305349052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2396bff4c8a897b428b3eac70146b126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalInput: 0
+  verticalInput: 0
+  speed: 0
+  walkSpeed: 0
+  runSpeed: 0
+  maxStamina: 0
+  runCost: 0
+  stamina: 0
+  coolDown: 0
+  isRunning: 0
+  grounded: 0
+--- !u!4 &1305349054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305349052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.711578, y: -13.756696, z: 138.86255}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335230702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,7 +1860,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8efe2b7d08044d4db9d54f273404d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2789,7 +2855,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f8efe2b7d08044d4db9d54f273404d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3044,7 +3110,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -7795,3 +7861,4 @@ SceneRoots:
   - {fileID: 1052853521}
   - {fileID: 389489123}
   - {fileID: 1415161670}
+  - {fileID: 1305349054}
