@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : Movement
 {
-    
 
-    public bool canJump = true;
+    private bool falling;
+    private bool canJump = true;
     public float jumpHeight = 2.0f;
     
     Rigidbody r;
@@ -18,6 +18,7 @@ public class PlayerMovement : Movement
     [SerializeField] GameObject ballObject;
     [SerializeField] private Vector3 ballOffset;
     
+    private Animator animator;
 
 
     // Start is called before the first frame update
@@ -28,7 +29,7 @@ public class PlayerMovement : Movement
         maxStamina = 100f;
         runCost = 10f;
         stamina = maxStamina;
-        
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -70,13 +71,16 @@ public class PlayerMovement : Movement
         
         if (grounded)
         {
+           
+            falling = false;
             if (Input.GetButton("Jump") && canJump)
             {
+               
                 r.AddForce(transform.up * jumpHeight, ForceMode.VelocityChange);
             }
         }
-        if (!grounded) { canJump = false; }
-       
+        if (!grounded) { canJump = false; falling = true;  }
+        AnimationUpdate();
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -115,5 +119,15 @@ public class PlayerMovement : Movement
         coolDown = true;
         yield return new WaitForSeconds(maxStamina / runCost);
         coolDown = false;
+    }
+    private void AnimationUpdate()
+    {
+        animator.SetFloat("Speed", speed);
+        animator.SetFloat("MotionSpeed", verticalInput);
+        animator.SetBool("IsMoving", isMoving());
+        animator.SetBool("Jump", Input.GetButton("Jump"));
+        animator.SetBool("Grounded", grounded);
+        animator.SetBool("FreeFall", falling);
+
     }
 }
