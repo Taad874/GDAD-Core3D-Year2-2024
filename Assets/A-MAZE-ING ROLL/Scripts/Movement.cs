@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     
 
     public float maxStamina, runCost;
-     public float stamina;
+    [HideInInspector] public float stamina;
     [HideInInspector] public bool coolDown;
     [HideInInspector] public bool isRunning;
 
