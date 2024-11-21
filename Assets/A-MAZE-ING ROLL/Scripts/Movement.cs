@@ -21,9 +21,7 @@ public class Movement : MonoBehaviour
 
     [HideInInspector] public bool grounded;
 
-    public float rotSpeed;
-    public Quaternion newResetAngle;
-    public Camera cam;
+    
 
     [HideInInspector] public bool isMoving()
     {
@@ -36,11 +34,7 @@ public class Movement : MonoBehaviour
     
     public void Move()
     {
-        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
-        {
-            newResetAngle = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newResetAngle, rotSpeed * Time.deltaTime).normalized;
-        }
+        
        
         transform.Translate(Vector3.forward * Time.deltaTime * verticalInput * speed);
         transform.Translate(-Vector3.right * Time.deltaTime * -horizontalInput * speed);

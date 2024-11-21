@@ -19,8 +19,10 @@ public class PlayerMovement : Movement
     [SerializeField] private Vector3 ballOffset;
     
     private Animator animator;
+    public float rotSpeed;
+    public Quaternion newResetAngle;
+    public Camera cam;
 
-    
 
 
     // Start is called before the first frame update
@@ -36,8 +38,12 @@ public class PlayerMovement : Movement
 
     private void FixedUpdate()
     {
-        
 
+        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        {
+            newResetAngle = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newResetAngle, rotSpeed * Time.deltaTime).normalized;
+        }
         Move();
         if (onBall)// && !isMoving)
         {
