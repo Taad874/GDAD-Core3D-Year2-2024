@@ -20,6 +20,8 @@ public class PlayerMovement : Movement
     
     private Animator animator;
 
+    
+
 
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +36,7 @@ public class PlayerMovement : Movement
 
     private void FixedUpdate()
     {
+        
 
         Move();
         if (onBall)// && !isMoving)
@@ -80,6 +83,9 @@ public class PlayerMovement : Movement
             }
         }
         if (!grounded) { canJump = false; falling = true;  }
+
+        
+
         AnimationUpdate();
     }
     private void OnTriggerEnter(Collider collision)
