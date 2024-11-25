@@ -525,8 +525,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381906143}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11749242, y: -0.000000030519573, z: 0.0000000036108274, w: 0.99307376}
-  m_LocalPosition: {x: 0.92322326, y: 8.126664, z: -9.244019}
+  m_LocalRotation: {x: 0.117492415, y: 0.000000037773432, z: -0.0000000044690456,
+    w: 0.99307376}
+  m_LocalPosition: {x: 0.9232232, y: 8.126664, z: -9.244019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -775,7 +776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426952276}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11749241, y: -0.000000023179116, z: 0.000000002742365, w: 0.99307376}
+  m_LocalRotation: {x: 0.11749241, y: 0.000000113406784, z: -0.0000000134173685, w: 0.99307376}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1262,7 +1263,7 @@ Transform:
   m_GameObject: {fileID: 719523743}
   serializedVersion: 2
   m_LocalRotation: {x: -0.117492415, y: -0.000000037860023, z: 0.00000000447929, w: 0.99307376}
-  m_LocalPosition: {x: -0.00000013121166, y: -0.4359836, z: 2.2999828}
+  m_LocalPosition: {x: 0.00000010279288, y: -0.4359836, z: 2.2999828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1596,7 +1597,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!135 &824549930
 SphereCollider:
@@ -1707,7 +1708,11 @@ MonoBehaviour:
   coolDown: 0
   isRunning: 0
   grounded: 0
+  rotSpeed: 5
+  newResetAngle: {x: 0, y: 0, z: 0, w: 0}
+  cam: {fileID: 381906145}
   playerObject: {fileID: 0}
+  rotatingMat: {fileID: 2100000, guid: b1a3305f608b6624aa22c7cb368b55f4, type: 2}
   ejectForce: 1
 --- !u!95 &824549937
 Animator:
@@ -2100,7 +2105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241204006}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15113291, y: 0.0000000015153461, z: -2.316809e-10, w: 0.98851347}
+  m_LocalRotation: {x: 0.15113293, y: 0.000000075286046, z: -0.000000011510413, w: 0.98851347}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3929,7 +3934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627577737}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09946992, y: 0.00000004193114, z: -0.000000004191675, w: 0.9950406}
+  m_LocalRotation: {x: 0.09946993, y: 0.00000009748872, z: -0.00000000974553, w: 0.9950406}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4239,7 +4244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d0ddf8f6f5836bd42a91b287488ef5c5, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4357,12 +4362,12 @@ MonoBehaviour:
   coolDown: 0
   isRunning: 0
   grounded: 1
-  jumpHeight: 0.5
-  ballObject: {fileID: 824549928}
-  ballOffset: {x: 0, y: 3.639242, z: 0}
   rotSpeed: 5
   newResetAngle: {x: 0, y: 0, z: 0, w: 0}
   cam: {fileID: 381906145}
+  jumpHeight: 0.5
+  ballObject: {fileID: 824549928}
+  ballOffset: {x: 0, y: 3.639242, z: 0}
 --- !u!4 &1878093235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ba92d5c52dc22e43b5772252954a4fe,
@@ -4532,8 +4537,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -15,13 +15,15 @@ public class Movement : MonoBehaviour
     
 
     public float maxStamina, runCost;
-    [HideInInspector] public float stamina;
+     public float stamina;
     [HideInInspector] public bool coolDown;
     [HideInInspector] public bool isRunning;
 
     [HideInInspector] public bool grounded;
+    public float rotSpeed;
+    public Quaternion newResetAngle;
+    public Camera cam;
 
-    
 
     [HideInInspector] public bool isMoving()
     {

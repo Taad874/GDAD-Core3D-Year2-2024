@@ -9,7 +9,7 @@ public class BallRolling : Movement
 
     private Rigidbody rb;
     [SerializeField] private GameObject playerObject;
-
+    [SerializeField] private Material rotatingMat;
     
     [SerializeField] private float ejectForce;
 
@@ -20,12 +20,19 @@ public class BallRolling : Movement
         rb = GetComponent<Rigidbody>();
         //audioBehaviour = GetComponent<Audio_Behaviour>();
         stamina = maxStamina;
-        
+        rotatingMat = GetComponent<Material>();
     }
 
     private void FixedUpdate()
     {
+        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        {
+            newResetAngle = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newResetAngle, rotSpeed * Time.deltaTime).normalized;
+        }
         Move();
+        rotatingMat.SetVector("_ScrollVelocity", new Vector2(horizontalInput, verticalInput));
+        
     }
     // Update is called once per frame
     void Update()

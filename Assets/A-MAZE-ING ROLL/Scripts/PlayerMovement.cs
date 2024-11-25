@@ -19,10 +19,8 @@ public class PlayerMovement : Movement
     [SerializeField] private Vector3 ballOffset;
     
     private Animator animator;
-    public float rotSpeed;
-    public Quaternion newResetAngle;
-    public Camera cam;
-
+   
+    
 
 
     // Start is called before the first frame update
@@ -48,7 +46,7 @@ public class PlayerMovement : Movement
         if (onBall)// && !isMoving)
         {
 
-            ballObject.transform.rotation = transform.rotation;
+            //ballObject.transform.rotation = transform.rotation;
             walkSpeed = 2f;
             runSpeed = 3.2f;
             ballObject.GetComponent<BallRolling>().enabled = true;
@@ -140,6 +138,7 @@ public class PlayerMovement : Movement
         animator.SetBool("Jump", Input.GetButton("Jump"));
         animator.SetBool("Grounded", grounded);
         animator.SetBool("FreeFall", falling);
-
+        animator.SetFloat("Vertical", verticalInput);
+        animator.SetFloat("Horizontal", horizontalInput);
     }
 }
