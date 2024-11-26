@@ -11,7 +11,7 @@ public class BallRolling : Movement
     [SerializeField] private GameObject playerObject;
     [SerializeField] private Material rotatingMat;
     
-    [SerializeField] private float ejectForce;
+    [SerializeField] public float ejectForce;
 
     
     // Start is called before the first frame update

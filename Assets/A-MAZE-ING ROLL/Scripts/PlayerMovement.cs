@@ -36,7 +36,7 @@ public class PlayerMovement : Movement
 
     private void FixedUpdate()
     {
-
+        ballObject.GetComponent<BallRolling>().ejectForce = 2f;
         if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
         {
             newResetAngle = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
@@ -59,11 +59,19 @@ public class PlayerMovement : Movement
 
         }
 
-        
+
 
         if (!isMoving() && onBall)
         {
             transform.position = Vector3.MoveTowards(transform.position, ballObject.transform.position + ballOffset, Time.deltaTime * speed);
+            //if (transform.position != ballObject.transform.position + ballOffset)
+            //{
+            //    animator.SetBool("IsMoving", true);
+            //}                                                                            -Attempting to animate the player when moving back
+            //else                                                                          - May just set a bool for the movement.
+            //{
+            //    animator.SetBool("IsMoving", false);
+            //}
         }
     }
     // Update is called once per frame
@@ -134,11 +142,12 @@ public class PlayerMovement : Movement
     {
         animator.SetFloat("Speed", speed);
         animator.SetFloat("MotionSpeed", verticalInput);
+        animator.SetFloat("HorizontalSpeed", horizontalInput);
         animator.SetBool("IsMoving", isMoving());
         animator.SetBool("Jump", Input.GetButton("Jump"));
         animator.SetBool("Grounded", grounded);
         animator.SetBool("FreeFall", falling);
-        animator.SetFloat("Vertical", verticalInput);
-        animator.SetFloat("Horizontal", horizontalInput);
+        animator.SetBool("Vertical", verticalInput != 0);
+        animator.SetBool("Horizontal", horizontalInput != 0);
     }
 }

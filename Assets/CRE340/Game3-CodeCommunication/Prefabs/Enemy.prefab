@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6643007591796646304}
   - component: {fileID: 254297637342302027}
   - component: {fileID: 5497435827614561994}
-  - component: {fileID: 7474414437867384727}
+  - component: {fileID: 2510144265339119272}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 254297637342302027}
   m_maskType: 0
---- !u!114 &7474414437867384727
+--- !u!114 &2510144265339119272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1913895355949340239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7335173baed9a4797f9c3d04e3f7cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b88a7fbac2288146b32138e202f4403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 0}
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf73790f31445044ae6023c971d28b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 99c209bf67f8d1f488724bed53e21e1b, type: 2}
+  enemyData: {fileID: 11400000, guid: 16c7590885f0fcf479df9d7f69ddbd61, type: 2}
   damage: 10
   health: 10
   speed: 2

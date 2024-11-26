@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6745753801498674238}
   - component: {fileID: 1013859417776812836}
   - component: {fileID: -8586089397178694652}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c41754764d8d442aabc6a93b760e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Niall
+  playerName: Player
   health: 100
   dieEffectPrefab: {fileID: 2266959994559975120, guid: 05b09e4a1f3b1d44bb86d2f25468b730,
     type: 3}
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4665396527976864019}
   - component: {fileID: 7803229436904622697}
   - component: {fileID: 7571049354585913142}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Forward Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 2475945601436289300}
   - component: {fileID: 8262685576796690044}
   - component: {fileID: 7436013567030535850}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -577,7 +577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5671860664751113054}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: BulletSpawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
