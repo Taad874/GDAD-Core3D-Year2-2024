@@ -42,8 +42,9 @@ public class BallRolling : Movement
 
         if (stamina == 0)
         {
-            playerObject.GetComponent<Rigidbody>().AddForce(new Vector3(ejectForce, ejectForce, ejectForce), ForceMode.Force);
-            stamina = maxStamina;
+            Debug.Log("Ejection?");
+            playerObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, ejectForce, 0), ForceMode.Force);
+            //stamina = maxStamina;
         }
         if (isMoving())
         {
@@ -51,4 +52,5 @@ public class BallRolling : Movement
         }
         
     }
+    
 }

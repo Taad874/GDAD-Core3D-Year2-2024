@@ -110,7 +110,7 @@ public class PlayerMovement : Movement
             onBall = true;
             ballObject = collision.gameObject;
             transform.position = Vector3.MoveTowards(transform.position, ballObject.transform.position + ballOffset, Time.deltaTime * speed);
-            
+            ballObject.GetComponent<BallRolling>().stamina = ballObject.GetComponent<BallRolling>().maxStamina;
 
 
 
