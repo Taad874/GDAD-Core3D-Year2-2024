@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    public float speed = 5f;
+    private float horizontalInput;
+    private float verticalInput;
+    [SerializeField] private float speed;
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -15,9 +17,9 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement * speed);
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        transform.Rotate(Vector3.right * verticalInput * speed * Time.deltaTime);
+        transform.Rotate(Vector3.forward * horizontalInput * speed * Time.deltaTime);
     }
 }

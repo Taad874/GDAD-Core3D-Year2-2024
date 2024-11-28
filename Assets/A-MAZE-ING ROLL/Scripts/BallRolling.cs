@@ -9,9 +9,9 @@ public class BallRolling : Movement
 
     private Rigidbody rb;
     [SerializeField] private GameObject playerObject;
-    [SerializeField] private Material rotatingMat;
     
-    [SerializeField] public float ejectForce;
+    
+    public float ejectForce;
 
     
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class BallRolling : Movement
         rb = GetComponent<Rigidbody>();
         //audioBehaviour = GetComponent<Audio_Behaviour>();
         stamina = maxStamina;
-        rotatingMat = GetComponent<Material>();
+        
     }
 
     private void FixedUpdate()
@@ -31,7 +31,7 @@ public class BallRolling : Movement
             transform.rotation = Quaternion.Slerp(transform.rotation, newResetAngle, rotSpeed * Time.deltaTime).normalized;
         }
         Move();
-        rotatingMat.SetVector("_ScrollVelocity", new Vector2(horizontalInput, verticalInput));
+        
         
     }
     // Update is called once per frame

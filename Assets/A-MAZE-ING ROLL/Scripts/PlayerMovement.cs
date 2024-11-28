@@ -36,7 +36,7 @@ public class PlayerMovement : Movement
 
     private void FixedUpdate()
     {
-        ballObject.GetComponent<BallRolling>().ejectForce = 2f;
+        
         if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
         {
             newResetAngle = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
