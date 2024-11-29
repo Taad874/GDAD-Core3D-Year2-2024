@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - VirtualCamera
   - CheckPointRest Area
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
