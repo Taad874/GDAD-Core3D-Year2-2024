@@ -8,6 +8,7 @@ public class LivesManager : MonoBehaviour
 {
     [SerializeField] private int lives;
     [SerializeField] private LayerMask deathLayer;
+    [SerializeField] private CheckPointSystem checkPoint;
     private bool floorDeath;
     private bool holeDeath;
     private void Update()
@@ -34,14 +35,26 @@ public class LivesManager : MonoBehaviour
 
             lives--;
             //FadeOut
+            StartCoroutine(FadeOut());
             //Respawn Goes Here
+            checkPoint.Spawning();
+            floorDeath = false;
+            holeDeath = false;
+            
         }
         if (collision.gameObject.CompareTag("Floor"))
         {
             floorDeath = true;
         }
+        else if (collision.gameObject.CompareTag("Hole"))
+        {
+            holeDeath = true;
+        }
            
-        
+        IEnumerator FadeOut()
+        {
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     
