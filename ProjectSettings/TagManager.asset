@@ -9,6 +9,8 @@ TagManager:
   - VirtualCamera
   - CheckPointRest Area
   - CheckPoint
+  - Hole
+  - Floor
   layers:
   - Default
   - TransparentFX

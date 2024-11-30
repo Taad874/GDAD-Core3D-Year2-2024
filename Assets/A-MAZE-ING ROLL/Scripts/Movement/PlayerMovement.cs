@@ -144,7 +144,7 @@ public class PlayerMovement : Movement
         animator.SetFloat("Speed", speed);
         animator.SetFloat("MotionSpeed", verticalInput);
         animator.SetFloat("HorizontalSpeed", horizontalInput);
-        //animator.SetBool("IsMoving", isMoving());
+        animator.SetBool("IsMoving", isMoving());
         animator.SetBool("Jump", Input.GetButton("Jump"));
         animator.SetBool("Grounded", grounded);
         animator.SetBool("FreeFall", falling);
