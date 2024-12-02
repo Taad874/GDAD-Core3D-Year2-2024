@@ -50,6 +50,7 @@ public class PlayerMovement : Movement
             walkSpeed = 2f;
             runSpeed = 3.2f;
             ballObject.GetComponent<BallRolling>().enabled = true;
+            
         }
         else
         {
@@ -64,16 +65,14 @@ public class PlayerMovement : Movement
         if (!isMoving() && onBall)
         {
             transform.position = Vector3.MoveTowards(transform.position, ballObject.transform.position + ballOffset, Time.deltaTime * speed);
-            if (transform.position != ballObject.transform.position + ballOffset)
+            animator.SetBool("ReCenter", true);
+            if (transform.position == ballObject.transform.position + ballOffset)
             {
-                animator.SetBool("IsMoving", true);
+                animator.SetBool("ReCenter", false);
             }
-            
-            else
-            {
-                animator.SetBool("IsMoving", false);
-            }
+
         }
+        
     }
     // Update is called once per frame
     void Update()

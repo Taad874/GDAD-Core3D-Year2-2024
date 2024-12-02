@@ -13,6 +13,7 @@ public class LivesManager : MonoBehaviour
     [SerializeField] private FadeOut fade;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI livesText;
+    //[SerializeField] private Vector3 deathCheck;
     private bool floorDeath;
     private bool holeDeath;
 
@@ -22,68 +23,72 @@ public class LivesManager : MonoBehaviour
     }
     private void Update()
     {
+        //if (Physics.BoxCast(playerMovement.transform.position, playerMovement.transform.localScale, playerMovement.transform.position, Quaternion.identity, -0.01f, deathLayer))
+
+        //{
+        //    Death();
+        //}  MAY NEED SOME HELP/RESEARCH
+        DecreaseLives();
         if (lives <= 0)
         {
             if (floorDeath)
             {
+                Debug.Log("DiedFloor");
                 //FloorDeath Cutscene
             }
             else if (holeDeath)
             {
+                Debug.Log("DiedHole");
                 //HoleDEATH cutscene
             }
-
+            lives = Mathf.Clamp(lives, 0, 3);
 
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.layer == deathLayer) //LOOK UP ABOUT LAYERMASKS (Hint: It is used in Update when doing it for Corto :3)
-        {
-            
-
-
-        }
         if (collision.gameObject.CompareTag("Floor"))
         {
             floorDeath = true;
-            Debug.Log(collision.gameObject.name);
-            Debug.Log("Died");
-            //playerMovement.enabled = false;
-            lives--;
-            DecreaseLives();
-            //FadeOut
-            fade.fadeIn = true;
-
-            //Respawn Goes Here
-            checkPoint.Spawning();
-           
+            Death();
             holeDeath = false;
-            StartCoroutine(FadeOut());
+            Debug.Log(collision.gameObject.name);
+            
+            
+            
         }
         else if (collision.gameObject.CompareTag("Hole"))
         {
             holeDeath = true;
-            Debug.Log(collision.gameObject.name);
-            Debug.Log("Died");
-            //playerMovement.enabled = false;
-            lives--;
-            DecreaseLives();
-            //FadeOut
-            fade.fadeIn = true;
-
-            //Respawn Goes Here
-            checkPoint.Spawning();
+            Death();
             floorDeath = false;
+            Debug.Log(collision.gameObject.name);
             
-            StartCoroutine(FadeOut());
+            
         }
 
     
     }
 
+    
+    private void Death()
+    {
+        playerMovement.enabled = false;
+        if (lives <= 0)
+        {
+            lives = 0;
+        }
+        else { lives--; }
+        DecreaseLives();
+        //FadeOut
+        fade.fadeIn = true;
+
+        //Respawn Goes Here
+
+        StartCoroutine(FadeOut());
         
-    void DecreaseLives()
+    }
+    private void DecreaseLives()
     {
         livesText.text = "Lives:" + lives.ToString();
     }
@@ -91,9 +96,12 @@ public class LivesManager : MonoBehaviour
     IEnumerator FadeOut()
     {
         yield return new WaitForSeconds(1f);
-        fade.fadeOut = true;
+        checkPoint.Spawning();
         yield return new WaitForSeconds(1f);
+        fade.fadeOut = true;
         playerMovement.enabled = true;
+        
+
     }
 }
 
