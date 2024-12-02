@@ -7,8 +7,7 @@ public class BallController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     [SerializeField] private float speed;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private LayerMask layerMask2;
+    
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
