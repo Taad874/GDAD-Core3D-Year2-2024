@@ -16,6 +16,7 @@ public class LivesManager : MonoBehaviour
     //[SerializeField] private Vector3 deathCheck;
     private bool floorDeath;
     private bool holeDeath;
+    private bool isDead;
 
     private void Awake()
     {
@@ -23,11 +24,7 @@ public class LivesManager : MonoBehaviour
     }
     private void Update()
     {
-        //if (Physics.BoxCast(playerMovement.transform.position, playerMovement.transform.localScale, playerMovement.transform.position, Quaternion.identity, -0.01f, deathLayer))
-
-        //{
-        //    Death();
-        //}  MAY NEED SOME HELP/RESEARCH
+        
         DecreaseLives();
         if (lives <= 0)
         {
@@ -47,32 +44,37 @@ public class LivesManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
+        if (!isDead)
         {
-            floorDeath = true;
-            Death();
-            holeDeath = false;
-            Debug.Log(collision.gameObject.name);
-            
-            
-            
-        }
-        else if (collision.gameObject.CompareTag("Hole"))
-        {
-            holeDeath = true;
-            Death();
-            floorDeath = false;
-            Debug.Log(collision.gameObject.name);
-            
-            
-        }
+            if (collision.gameObject.CompareTag("Floor"))
+            {
+                floorDeath = true;
+                isDead = true;
+                Death();
+                holeDeath = false;
+                Debug.Log(collision.gameObject.name);
 
-    
+
+
+            }
+            else if (collision.gameObject.CompareTag("Hole"))
+            {
+                holeDeath = true;
+                isDead = true;
+                Death();
+                floorDeath = false;
+                Debug.Log(collision.gameObject.name);
+
+
+            }
+
+        }
     }
 
     
     private void Death()
     {
+        
         playerMovement.enabled = false;
         if (lives <= 0)
         {
@@ -84,9 +86,10 @@ public class LivesManager : MonoBehaviour
         fade.fadeIn = true;
 
         //Respawn Goes Here
-
-        StartCoroutine(FadeOut());
-        
+        if (lives > 0)
+        {
+            StartCoroutine(FadeOut());
+        }
     }
     private void DecreaseLives()
     {
@@ -100,9 +103,10 @@ public class LivesManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         fade.fadeOut = true;
         playerMovement.enabled = true;
-        
+        isDead = false;
 
     }
+   
 }
 
     

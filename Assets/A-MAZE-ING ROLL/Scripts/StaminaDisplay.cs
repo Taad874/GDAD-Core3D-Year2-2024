@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class StaminaDisplay : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup _canvasGroup;
+    public bool fadeIn;
+    public bool fadeOut;
+
+
+ 
     private PlayerMovement player;
     private Image fillImage;
     // Start is called before the first frame update
@@ -18,15 +24,43 @@ public class StaminaDisplay : MonoBehaviour
     void Update()
     {
         fillImage.fillAmount = player.GetStamina() / player.GetMaxStamina();
-        if (fillImage.fillAmount == player.GetMaxStamina())
+        if (fillImage.fillAmount == 1f)
         {
-            fillImage.color = new Color(0,1,0,0);
-            fillImage.GetComponentInParent<Graphic>().color = Color.clear; //find way to make parent disappear
+            
+            fadeOut = true;
         }
         else
         {
-            fillImage.color = new Color(0, 1, 0, 1);
             
+            fadeIn = true;
+        }
+
+
+
+        if (fadeIn)
+        {
+            if (_canvasGroup.alpha < 1)
+            {
+                _canvasGroup.alpha += Time.deltaTime;
+                if (_canvasGroup.alpha >= 1)
+                {
+                    fadeIn = false;
+                    fadeOut = false;
+                    _canvasGroup.alpha = 1;
+                }
+            }
+        }
+        if (fadeOut)
+        {
+            if (_canvasGroup.alpha > 0)
+            {
+                _canvasGroup.alpha -= Time.deltaTime;
+                if (_canvasGroup.alpha == 0)
+                {
+                    fadeOut = false;
+                    //StartCoroutine(Wait());
+                }
+            }
         }
     }
 }
