@@ -57,7 +57,7 @@ public class PlayerMovement : Movement
             walkSpeed = 5f;
             runSpeed = 7f;
             ballObject.GetComponent<BallRolling>().enabled = false;
-
+            animator.SetBool("ReCenter", false);
         }
 
 

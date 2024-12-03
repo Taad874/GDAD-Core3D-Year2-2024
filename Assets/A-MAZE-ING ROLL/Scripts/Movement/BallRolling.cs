@@ -49,7 +49,7 @@ public class BallRolling : Movement
         if (isMoving())
         {
             //AudioEventManager.PlaySFX(this.transform, "Ball2", 1.0f, 1.0f, true, 0.1f, 0f, "Moving");
-            gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<AudioSource>().PlayOneShot(gameObject.GetComponent<AudioSource>().clip);
             gameObject.GetComponent<AudioSource>().loop = true;
         }
         else
@@ -57,7 +57,7 @@ public class BallRolling : Movement
             gameObject.GetComponent<AudioSource>().Stop();
             gameObject.GetComponent<AudioSource>().loop = false;
         }
-        
+
     }
     
 }
