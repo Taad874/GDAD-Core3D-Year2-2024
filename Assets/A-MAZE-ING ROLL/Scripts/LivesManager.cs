@@ -8,13 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
+    [SerializeField] private Audio_Behaviour audioSource;
     [SerializeField] private int lives;
     [SerializeField] private LayerMask deathLayer;
     [SerializeField] private CheckPointSystem checkPoint;
     [SerializeField] private FadeOut fade;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI livesText;
-    [SerializeField] private AudioSource audioSource;
+    
     //[SerializeField] private Vector3 deathCheck;
     private bool floorDeath;
     private bool holeDeath;
@@ -23,6 +24,7 @@ public class LivesManager : MonoBehaviour
     private void Awake()
     {
         DecreaseLives();
+        audioSource = GetComponent<Audio_Behaviour>();
     }
     private void Update()
     {
@@ -110,8 +112,8 @@ public class LivesManager : MonoBehaviour
         }
         else
         {
-            
-            audioSource.PlayOneShot(audioSource.clip);
+
+            audioSource.PlayClip(1);
             yield return new WaitForSeconds(1f);
             
             checkPoint.Spawning();
