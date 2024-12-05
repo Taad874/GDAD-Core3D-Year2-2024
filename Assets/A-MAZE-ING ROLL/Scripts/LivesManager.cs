@@ -14,6 +14,7 @@ public class LivesManager : MonoBehaviour
     [SerializeField] private FadeOut fade;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] private AudioSource audioSource;
     //[SerializeField] private Vector3 deathCheck;
     private bool floorDeath;
     private bool holeDeath;
@@ -71,8 +72,7 @@ public class LivesManager : MonoBehaviour
         else { lives--; }
         DecreaseLives();
         //FadeOut
-        fade.fadeIn = true;
-
+        
         //Respawn Goes Here
         
         StartCoroutine(FadeOut());
@@ -86,11 +86,15 @@ public class LivesManager : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(1f);
+        fade.fadeIn = true;
+        
+        
         if (lives <= 0)
         {
+            yield return new WaitForSeconds(1f);
             if (floorDeath)
             {
+
                 Debug.Log("DiedFloor");
                 //FloorDeath Cutscene
                 SceneManager.LoadScene("FloorDeath");
@@ -106,6 +110,10 @@ public class LivesManager : MonoBehaviour
         }
         else
         {
+            
+            audioSource.PlayOneShot(audioSource.clip);
+            yield return new WaitForSeconds(1f);
+            
             checkPoint.Spawning();
             yield return new WaitForSeconds(1f);
             fade.fadeOut = true;

@@ -48,15 +48,17 @@ public class BallRolling : Movement
         }
         if (isMoving())
         {
+            if (gameObject.GetComponent<AudioSource>().isPlaying) { return; }
+            //gameObject.GetComponent<AudioSource>().pitch = Random.Range(.5f, .8f);
+            gameObject.GetComponent<AudioSource>().Play();
             //AudioEventManager.PlaySFX(this.transform, "Ball2", 1.0f, 1.0f, true, 0.1f, 0f, "Moving");
-            gameObject.GetComponent<AudioSource>().PlayOneShot(gameObject.GetComponent<AudioSource>().clip);
-            gameObject.GetComponent<AudioSource>().loop = true;
+            
         }
-        else
-        {
-            gameObject.GetComponent<AudioSource>().Stop();
-            gameObject.GetComponent<AudioSource>().loop = false;
-        }
+        //else
+        //{
+        //    gameObject.GetComponent<AudioSource>().Stop();
+        //    gameObject.GetComponent<AudioSource>().loop = false;
+        //}
 
     }
     
