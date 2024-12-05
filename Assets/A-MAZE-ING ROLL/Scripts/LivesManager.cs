@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
@@ -26,21 +27,8 @@ public class LivesManager : MonoBehaviour
     {
         
         DecreaseLives();
-        if (lives <= 0)
-        {
-            if (floorDeath)
-            {
-                Debug.Log("DiedFloor");
-                //FloorDeath Cutscene
-            }
-            else if (holeDeath)
-            {
-                Debug.Log("DiedHole");
-                //HoleDEATH cutscene
-            }
-            lives = Mathf.Clamp(lives, 0, 3);
+        lives = Mathf.Clamp(lives, 0, 3);
 
-        }
     }
     private void OnTriggerEnter(Collider collision)
     {
@@ -86,10 +74,10 @@ public class LivesManager : MonoBehaviour
         fade.fadeIn = true;
 
         //Respawn Goes Here
-        if (lives > 0)
-        {
-            StartCoroutine(FadeOut());
-        }
+        
+        StartCoroutine(FadeOut());
+        
+        
     }
     private void DecreaseLives()
     {
@@ -99,11 +87,33 @@ public class LivesManager : MonoBehaviour
     IEnumerator FadeOut()
     {
         yield return new WaitForSeconds(1f);
-        checkPoint.Spawning();
-        yield return new WaitForSeconds(1f);
-        fade.fadeOut = true;
-        playerMovement.enabled = true;
-        isDead = false;
+        if (lives <= 0)
+        {
+            if (floorDeath)
+            {
+                Debug.Log("DiedFloor");
+                //FloorDeath Cutscene
+                SceneManager.LoadScene("FloorDeath");
+            }
+            else if (holeDeath)
+            {
+                Debug.Log("DiedHole");
+                //HoleDEATH cutscene
+                SceneManager.LoadScene("HoleDeath");
+            }
+
+
+        }
+        else
+        {
+            checkPoint.Spawning();
+            yield return new WaitForSeconds(1f);
+            fade.fadeOut = true;
+            playerMovement.enabled = true;
+            isDead = false;
+        }
+       
+
 
     }
    

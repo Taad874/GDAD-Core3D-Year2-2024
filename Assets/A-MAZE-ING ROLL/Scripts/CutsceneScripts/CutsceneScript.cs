@@ -16,14 +16,15 @@ public class CutsceneScript : MonoBehaviour
     {
         transition = transition.GetComponent<PlayableDirector>();
         transitionDuration = transition.GetComponent<PlayableDirector>().duration;
-        
+        Debug.Log(transitionDuration);
     }
    
 
     // Update is called once per frame
     void Update()
     {
-        if (transition.time == transitionDuration)
+       
+        if (transitionDuration <= transition.time)
         {
             Debug.Log("Loading");
             isCutscene = true;
@@ -32,9 +33,9 @@ public class CutsceneScript : MonoBehaviour
         }
         if (Input.anyKeyDown && isCutscene)
         {
-            Debug.Log("AAAAAA");
+            
             Debug.Log("LoadingGame!");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("A-Maze-ing_Roll_1");
         }
         
     }
