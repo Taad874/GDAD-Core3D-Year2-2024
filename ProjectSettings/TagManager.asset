@@ -11,6 +11,8 @@ TagManager:
   - CheckPoint
   - Hole
   - Floor
+  - RubyMonkey
+  - SilverMonkey
   layers:
   - Default
   - TransparentFX
