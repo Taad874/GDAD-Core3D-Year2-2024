@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
-    [SerializeField] private Audio_Behaviour audioSource;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] audioClip;
     [SerializeField] private int lives;
     [SerializeField] private LayerMask deathLayer;
     [SerializeField] private CheckPointSystem checkPoint;
@@ -24,12 +25,12 @@ public class LivesManager : MonoBehaviour
     private void Awake()
     {
         DecreaseLives();
-        audioSource = GetComponent<Audio_Behaviour>();
+        
     }
     private void Update()
     {
         
-        DecreaseLives();
+        
         lives = Mathf.Clamp(lives, 0, 3);
 
     }
@@ -67,32 +68,37 @@ public class LivesManager : MonoBehaviour
     {
         
         playerMovement.enabled = false;
+        StartCoroutine(FadeOut());
         if (lives <= 0)
         {
             lives = 0;
         }
         else { lives--; }
-        DecreaseLives();
+        
         //FadeOut
-        
+
         //Respawn Goes Here
-        
-        StartCoroutine(FadeOut());
-        
-        
+
+
+
+
     }
     private void DecreaseLives()
     {
+       
+        audioSource.PlayOneShot(audioClip[1]);
         livesText.text = "Lives:" + lives.ToString();
     }
-
+    
     IEnumerator FadeOut()
     {
+
+
+        audioSource.PlayOneShot(audioClip[0]);
         fade.fadeIn = true;
-        
-        
         if (lives <= 0)
         {
+            //fade.fadeIn = true;
             yield return new WaitForSeconds(1f);
             if (floorDeath)
             {
@@ -112,8 +118,8 @@ public class LivesManager : MonoBehaviour
         }
         else
         {
-
-            audioSource.PlayClip(1);
+            
+           
             yield return new WaitForSeconds(1f);
             
             checkPoint.Spawning();
@@ -121,6 +127,7 @@ public class LivesManager : MonoBehaviour
             fade.fadeOut = true;
             playerMovement.enabled = true;
             isDead = false;
+            DecreaseLives();
         }
        
 
