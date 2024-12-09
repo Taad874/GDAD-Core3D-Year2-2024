@@ -32,8 +32,8 @@ public class Collectables : MonoBehaviour
         {
             items++;
             Destroy(collision.gameObject);
-            audioSource.pitch = Random.Range(1f, 1.5f);
-            audioSource.volume = 1f;
+            audioSource.pitch = Random.Range(.8f, 1.2f);
+            audioSource.volume = 1.5f;
             audioSource.PlayOneShot(silverClip);
             
         }
