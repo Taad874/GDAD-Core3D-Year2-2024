@@ -54,6 +54,10 @@ public class BallRolling : Movement
             //AudioEventManager.PlaySFX(this.transform, "Ball2", 1.0f, 1.0f, true, 0.1f, 0f, "Moving");
             
         }
+        if (transform.GetComponent<BallRolling>().enabled)
+        {
+            transform.GetComponentInChildren<BallController>().enabled = true;
+        }
         //else
         //{
         //    gameObject.GetComponent<AudioSource>().Stop();

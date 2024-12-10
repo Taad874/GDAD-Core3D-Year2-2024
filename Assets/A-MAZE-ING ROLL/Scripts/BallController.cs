@@ -22,6 +22,9 @@ public class BallController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         transform.Rotate(Vector3.right * verticalInput * speed * Time.deltaTime);
         transform.Rotate(Vector3.forward * horizontalInput * speed * Time.deltaTime);
-        
+        if (transform.GetComponentInParent<BallRolling>().enabled == false)
+        {
+            transform.GetComponent<BallController>().enabled = false;
+        }
     }
 }

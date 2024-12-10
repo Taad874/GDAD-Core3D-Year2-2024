@@ -215,10 +215,10 @@ AnimatorStateMachine:
     m_Position: {x: 510, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4904374827865815297}
-    m_Position: {x: 480, y: 690, z: 0}
+    m_Position: {x: 540, y: 760, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4968561255626037635}
-    m_Position: {x: 610, y: 590, z: 0}
+    m_Position: {x: 610, y: 640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4383603467938755012}
     m_Position: {x: 130, y: 370, z: 0}
@@ -455,6 +455,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Horizontal
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: Speed
+    m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4904374827865815297}
   m_Solo: 0
@@ -796,7 +799,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 3.5
+    m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4904374827865815297}
   m_Solo: 0
@@ -974,7 +977,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: Speed
-    m_EventTreshold: 3.5
+    m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4904374827865815297}
   m_Solo: 0
@@ -1389,7 +1392,7 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: ba360b6280ff5d44999ae87f5fd8739a, type: 2}
-    m_Threshold: 2
+    m_Threshold: 3.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1397,7 +1400,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: f43b88a5256d9a04489470bcf8f2a396, type: 2}
-    m_Threshold: 5
+    m_Threshold: 5.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -1413,7 +1416,7 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: Speed
   m_BlendParameterY: Speed
-  m_MinThreshold: 2
+  m_MinThreshold: 3.5
   m_MaxThreshold: 7
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
