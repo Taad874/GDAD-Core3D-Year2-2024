@@ -47,8 +47,8 @@ public class PlayerMovement : Movement
         {
 
             //ballObject.transform.rotation = transform.rotation;
-            walkSpeed = 2f;
-            runSpeed = 3.2f;
+            walkSpeed = 3.5f;
+            runSpeed = 4.3f;
             ballObject.GetComponent<BallRolling>().enabled = true;
             
         }
