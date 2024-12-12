@@ -47,15 +47,15 @@ public class PlayerMovement : Movement
         {
 
             //ballObject.transform.rotation = transform.rotation;
-            walkSpeed = 3.5f;
-            runSpeed = 4.3f;
+            walkSpeed = 4f;
+            runSpeed = 4.7f;
             ballObject.GetComponent<BallRolling>().enabled = true;
             
         }
         else
         {
-            walkSpeed = 5f;
-            runSpeed = 7f;
+            walkSpeed = 6.5f;
+            runSpeed = 8f;
             ballObject.GetComponent<BallRolling>().enabled = false;
             animator.SetBool("ReCenter", false);
         }
