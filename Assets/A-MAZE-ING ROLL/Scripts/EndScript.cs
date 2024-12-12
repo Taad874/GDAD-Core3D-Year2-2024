@@ -13,11 +13,12 @@ public class EndScript : MonoBehaviour
         {
             Debug.Log(other.name);
             fade.fadeIn = true;
+            end = true;
         }
     }
     private void Update()
     {
-        if (fade.GetComponent<CanvasGroup>().alpha >= 1f)
+        if (fade.GetComponent<CanvasGroup>().alpha >= 1f && end == true)
         {
             SceneManager.LoadScene("EndingScene");
         }
