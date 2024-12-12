@@ -5,23 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class EndScript : MonoBehaviour
 {
-    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] private FadeOut fade;
     private bool end;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log(other.name);
-            canvasGroup.alpha = 1;
-            other.GetComponent<PlayerMovement>().enabled = false;
-            end = true;
+            fade.fadeIn = true;
         }
     }
     private void Update()
     {
-        if (end && Input.anyKeyDown)
+        if (fade.GetComponent<CanvasGroup>().alpha >= 1f)
         {
-            SceneManager.LoadScene("A-Maze-ing_Roll_1");
+            SceneManager.LoadScene("EndingScene");
         }
+        //if (end && Input.anyKeyDown)
+        //{
+        //    SceneManager.LoadScene("A-Maze-ing_Roll_1");
+        //}
     }
 }
