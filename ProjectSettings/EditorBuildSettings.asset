@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/A-MAZE-ING ROLL/Scenes/Opening.unity
+    guid: be8d8c79b0da3bd4ca228ea997b67268
+  - enabled: 1
     path: Assets/A-MAZE-ING ROLL/Scenes/A-Maze-ing_Roll_1.unity
     guid: 07bf5c17f5f7b9640a2b0f1a0d98ab91
   - enabled: 1
