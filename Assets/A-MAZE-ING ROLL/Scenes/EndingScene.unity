@@ -359,7 +359,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 504122635564712197, guid: 351635d9bba021f408270f35cfd45125, type: 2}
-    value: {fileID: 559799361}
+    value: {fileID: 595918778}
   - key: {fileID: 7858410991262099196, guid: 351635d9bba021f408270f35cfd45125, type: 2}
     value: {fileID: 1100134862}
   - key: {fileID: 4018223758353537543, guid: 351635d9bba021f408270f35cfd45125, type: 2}
@@ -1246,7 +1246,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2ba92d5c52dc22e43b5772252954a4fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2ba92d5c52dc22e43b5772252954a4fe,
         type: 3}
@@ -2289,12 +2289,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &559799361 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 2ba92d5c52dc22e43b5772252954a4fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 303863819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &564458205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2578,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2652,6 +2646,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590195884}
   m_CullTransparentMesh: 1
+--- !u!1001 &595918777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -31.5834
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.849
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 114.2477
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5e31ab9245b7e054bba11ae241de7c50,
+        type: 3}
+      propertyPath: m_Name
+      value: Human02@Look Around
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e31ab9245b7e054bba11ae241de7c50, type: 3}
+--- !u!95 &595918778 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 5e31ab9245b7e054bba11ae241de7c50,
+    type: 3}
+  m_PrefabInstance: {fileID: 595918777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &656125358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,7 +3934,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -9225,3 +9293,4 @@ SceneRoots:
   - {fileID: 539195942}
   - {fileID: 1129567166}
   - {fileID: 258986738}
+  - {fileID: 595918777}
